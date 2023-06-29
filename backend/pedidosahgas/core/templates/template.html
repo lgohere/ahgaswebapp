@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <html>
+      <head>
+        <title>Produtos</title>
+      </head>
+      <body>
+        <h1>Carrinho</h1>
+        <h3 id="carrinho-qtd">{{ carrinho|length }}</h3>
+        <!-- Exibe a quantidade de itens no carrinho -->
+
+        <hr />
+        <h1>Produtos:</h1>
+        <ul>
+          {% for produto in produtos %}
+          <br />
+          <li>{{ produto}}</li>
+          <button class="btn-adicionar" data-produto="{{ produto }}">
+            Adicionar ao Carrinho
+          </button>
+          <br />
+          <button class="btn-remover" data-produto="{{ produto }}">
+            Remover do Carrinho
+          </button>
+          {% endfor %}
+          <br />
+        </ul>
+
+        <hr />
+        <h1>Meios de Pagamento</h1>
+        <ul>
+          {% for meio in meios_de_pagamento %}
+          <li>{{ meio }}</li>
+          {% endfor %}
+        </ul>
+        <br />
+        <hr />
+        <h1>Post para a plataforma da ahgas</h1>
+
+        <script>
+          // Adiciona um listener de evento aos botões "Adicionar ao Carrinho"
+          var buttonsAdicionar =
+            document.getElementsByClassName("btn-adicionar");
+          Array.from(buttonsAdicionar).forEach(function (button) {
+            button.addEventListener("click", adicionarCarrinho);
+          });
+
+          // Adiciona um listener de evento aos botões "Remover do Carrinho"
+          var buttonsRemover = document.getElementsByClassName("btn-remover");
+          Array.from(buttonsRemover).forEach(function (button) {
+            button.addEventListener("click", removerCarrinho);
+          });
+
+          // Função para enviar uma requisição GET para adicionar o produto ao carrinho
+          function adicionarCarrinho(event) {
+            var produtoId = event.target.getAttribute("data-produto");
+            var url = "/adicionar_carrinho/?produto_id=" + produtoId;
+            fetch(url)
+              .then(function (response) {
+                if (response.ok) {
+                  alert("Produto adicionado ao carrinho com sucesso!");
+                  return response.json(); // Parse a resposta JSON
+                } else {
+                  alert(
+                    "Ocorreu um erro ao adicionar o produto ao carrinho. Por favor, tente novamente."
+                  );
+                  throw new Error("Erro ao adicionar o produto ao carrinho");
+                }
+              })
+              .then(function (data) {
+                // Atualiza a quantidade de itens no carrinho exibida no template
+                var carrinhoQtdElement =
+                  document.getElementById("carrinho-qtd");
+                carrinhoQtdElement.textContent = data.carrinho.length;
+                console.log(data.carrinho); // Atualiza a quantidade com base na resposta JSON
+              })
+              .catch(function (error) {
+                console.error("Erro:", error);
+              });
+          }
+
+          // Função para enviar uma requisição GET para remover o produto do carrinho
+          function removerCarrinho(event) {
+            var produtoId = event.target.getAttribute("data-produto");
+            var url = "/remover_carrinho/?produto_id=" + produtoId;
+            fetch(url)
+              .then(function (response) {
+                if (response.ok) {
+                  alert("Produto removido do carrinho com sucesso!");
+                  return response.json(); // Parse a resposta JSON
+                } else {
+                  alert(
+                    "Ocorreu um erro ao remover o produto do carrinho. Por favor, tente novamente."
+                  );
+                  throw new Error("Erro ao remover o produto do carrinho");
+                }
+              })
+              .then(function (data) {
+                // Atualiza a quantidade de itens no carrinho exibida no template
+                var carrinhoQtdElement =
+                  document.getElementById("carrinho-qtd");
+                carrinhoQtdElement.textContent = data.carrinho.length;
+                console.log(data.carrinho); // Atualiza a quantidade com base na resposta JSON
+              })
+              .catch(function (error) {
+                console.error("Erro:", error);
+              });
+          }
+        </script>
+      </body>
+    </html>
+  </head>
+</html>

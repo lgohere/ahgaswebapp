@@ -1,0 +1,11 @@
+__pycache__
+dkdata
+*.pyc
+.coverage
+coverage.xml
+htmlcov/
+.idea
+/pedidosahgas.log
+/static
+.venv/
+/apimock/node_modules
