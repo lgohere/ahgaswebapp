@@ -2,8 +2,8 @@
   <v-container fluid class="pa-1 fill-height px-0">
     <v-card max-width="760" class="px-0 fill-height mx-auto" elevation="0">
       <v-layout class="fill-height px-0">
-        <v-main>
-          <v-container class="d-flex flex-column align-start">
+        <v-main class="mx-0 px-0">
+          <v-container class="d-flex flex-column align-start -">
             <h3 class="font-weight-bold">Insira o endereço para entrega:</h3>
 
             <v-container fluid class="bg-white pa-0">
@@ -28,7 +28,7 @@
                 </v-col>
               </v-row>
               <!-- detalhamento-endereço start -->
-              <v-container v-show="geolocator" class="px-0">
+              <v-container class="px-0">
                 <v-row>
                   <v-col cols="6" class="py-1">
                     <v-text-field
@@ -90,7 +90,7 @@
               <!-- -->
 
               <!-- GeoLocator -->
-              <v-row v-show="!geolocator">
+              <v-row>
                 <v-col class="d-flex align-center mb-5" cols="12">
                   <v-col cols="9">
                     <h5 class="font-weight-regular">

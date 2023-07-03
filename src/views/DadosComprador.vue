@@ -1,8 +1,8 @@
 <template>
-  <v-container fluid class="pa-1 px-0 mx-0 fill-height">
-    <v-card max-width="760" class="px-0 fill-height mx-auto" elevation="0">
-      <v-layout class="fill-height px-0">
-        <v-container fluid class="d-flex flex-column px-0">
+  <v-container fluid class="pt-1 fill-height">
+    <v-layout class="fill-height px-0">
+      <v-main class="mx-auto px-0">
+        <v-container fluid class="d-flex px-0 flex-column align-start">
           <h3 class="font-weight-bold">Insira os dados do comprador:</h3>
 
           <v-container fluid class="bg-white pa-0">
@@ -92,8 +92,8 @@
             </v-text>
           </v-container>
         </v-container>
-      </v-layout>
-    </v-card>
+      </v-main>
+    </v-layout>
   </v-container>
   <ProsseguirBotao />
 </template>

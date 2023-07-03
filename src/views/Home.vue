@@ -10,9 +10,9 @@
   </v-snackbar>
   <v-container
     fluid
-    class="py-0 pt-0 px-1 fill-height d-flex align-start justify-start"
+    class="py-0 pt-0 px-0 fill-height d-flex align-start justify-start"
   >
-    <v-card max-width="760" elevation="0" class="mx-auto pt-0 py-0">
+    <v-card max-width="760" elevation="0" class="mx-auto pt-1 py-0">
       <v-container class="d-flex flex-column align-start" fluid>
         <h3 class="font-weight-bold">Escolha seu produto:</h3>
         <h5 class="font-weight-regular pb-4">
