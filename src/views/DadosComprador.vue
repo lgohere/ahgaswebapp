@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="pt-1 fill-height">
+  <v-container fluid class="h-100 py-0" style="max-width: 800px">
     <v-layout class="fill-height px-0">
       <v-main class="mx-auto px-0">
         <v-container fluid class="d-flex px-0 flex-column align-start">
@@ -74,15 +74,26 @@
             </v-row>
           </v-container>
           <hr />
-          <v-container fluid class="my-2">
+          <v-container
+            fluid
+            class="my-2"
+            style="
+              border: 1px solid grey;
+              border-left: none;
+              border-right: none;
+            "
+          >
             <v-row class="font-weight-medium" style="font-size: small">
               <v-col cols="2"> 1</v-col>
               <v-col class="d-flex justify-center"> P-13 (Recarga)</v-col>
               <v-col class="d-flex justify-end"> R$ 110.00</v-col>
             </v-row>
           </v-container>
-          <hr />
-          <v-text class="font-weight-medium" style="font-size: small">
+          <v-text
+            class="font-weight-medium"
+            color="grey"
+            style="font-size: small"
+          >
             Por: Revenda Teste Ltda.
           </v-text>
           <br />

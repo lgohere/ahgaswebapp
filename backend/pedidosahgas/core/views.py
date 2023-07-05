@@ -1,4 +1,4 @@
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 import requests
@@ -170,6 +170,8 @@ def process_location_details(details, address):
         address['lng'] = lng
     return address
 
+
+# googlePlaces desenvolvimento
 
 def get_current_place(lat, lng):
 

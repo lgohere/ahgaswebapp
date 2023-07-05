@@ -12,3 +12,34 @@
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXWZt8O3y0lYSDresa8iAy14bvEumbYDc&libraries=places"
+>
+
+
+    let autocomplete = new google.maps.places.Autocomplete(
+      document.querySelector('#endereco'),
+      {
+        componentRestrictions: {
+          country: ['br']
+        },
+        field: ['address´_components'],
+        types: ["address"]
+      }
+    )
+
+  autocomplete.addEventeListener("place_changed", fillInAddress);
+  function fillInAddress(){
+    const place = autocomplete.getPlace();
+    for (const component of place.address_component) {
+      const componentType = component.types[0];
+
+      switch (componentType) {
+        case "locality":
+          document.queySelector("locality").value =
+          component.long_name;
+          break
+      }
+    }
+  }
+</script>
