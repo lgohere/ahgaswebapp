@@ -24,7 +24,7 @@
             </div>
           </v-col>
           <v-col cols="2" class="px-0 d-flex justify-center">
-            <v-btn size="x-large">
+            <v-btn size="x-large" @click="toggleCarrinho">
               <v-badge content="0" color="primary">
                 <v-icon>mdi-cart-outline</v-icon>
               </v-badge>
@@ -48,7 +48,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.9);
   z-index: -1;
   transition: opacity 0.1s ease;
 }
@@ -65,6 +65,13 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import { useProductStore } from "@/store/ProductStore";
+
+const productStore = useProductStore();
+
+const toggleCarrinho = () => {
+  productStore.toggleCarrinho();
+};
 
 let opacity = ref(1); // Inicialmente o v-app-bar é totalmente opaco
 

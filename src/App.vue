@@ -4,4 +4,7 @@
 
 <script setup>
 //
+
+import { useProductStore } from "@/store/ProductStore";
+useProductStore();
 </script>

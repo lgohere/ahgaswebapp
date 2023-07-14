@@ -85,12 +85,6 @@
 
 <script setup>
 import ProsseguirBotao from "@/components/ProsseguirBotao.vue";
-import { useProductStore } from "@/store/ProductStore";
-
-// const productStore = useProductStore();
-// const productss = productStore.products;
-
-// productStore.fill();
 
 const products = [
   {
@@ -126,10 +120,20 @@ const products = [
 ];
 </script>
 <script>
+import { onMounted } from "vue";
+import { useProductStore } from "@/store/ProductStore";
+
 export default {
-  data: () => ({
-    snackbar: false,
-    adicionado: `Item adicionado ao carrinho!`,
-  }),
+  setup() {
+    const productStore = useProductStore();
+
+    onMounted(async () => {
+      await productStore.fill();
+    });
+
+    return {
+      products: productStore.products,
+    };
+  },
 };
 </script>

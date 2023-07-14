@@ -11,9 +11,18 @@ GD_GROUP_HASH = '99b97d48ff2976e48105748d0e02f148' # revenda demonstração
 partner_hash_id = 'fc3e40dab457fdef1ea84d1583fa91ad' # revenda demonstração
 product_hash_id = 'bf0d0049b3b3e5a3f2c4d8f00ad8ff28'
 
-carrinho = []
-
 @csrf_exempt
+# def get_products(request):
+#     headers = {
+#         "gd-group-hash": GD_GROUP_HASH,
+#         "Content-Type": "application/json"
+#     }
+#     response = requests.get(f"{API_URL}/product", headers=headers)
+#     data = response.json()
+#     produtos = data['data']
+#     print(produtos)
+#     return render(request, 'template.html', {'produtos': produtos, 'carrinho': carrinho})
+
 def get_products(request):
     headers = {
         "gd-group-hash": GD_GROUP_HASH,
@@ -22,8 +31,8 @@ def get_products(request):
     response = requests.get(f"{API_URL}/product", headers=headers)
     data = response.json()
     produtos = data['data']
-    print(produtos)
-    return render(request, 'template.html', {'produtos': produtos, 'carrinho': carrinho})
+    return JsonResponse({'produtos': produtos})
+
 
 def adicionar_carrinho(request):
     produto_id = request.GET.get('produto_id')
@@ -173,29 +182,29 @@ def process_location_details(details, address):
 
 # googlePlaces desenvolvimento
 
-def get_current_place(lat, lng):
+# def get_current_place(lat, lng):
 
-    url = f"https://maps.googleapis.com/maps/api/geocode/json?latlng={37.7749},{-122.4194}&key={GOOGLE_PLACES_KEY}"
-    response = requests.get(url)
-    json_response = response.json()
+#     url = f"https://maps.googleapis.com/maps/api/geocode/json?latlng={37.7749},{-122.4194}&key={GOOGLE_PLACES_KEY}"
+#     response = requests.get(url)
+#     json_response = response.json()
 
-    return json_response['results'][0]
+#     return json_response['results'][0]
 
-details = {
-    'geometry': {
-        'location': {
-            'lat': 37.7749,
-            'lng': -122.4194
-        }
-    }
-}
+# details = {
+#     'geometry': {
+#         'location': {
+#             'lat': 37.7749,
+#             'lng': -122.4194
+#         }
+#     }
+# }
 
-address = {
-    'street': '123 Main St',
-    'city': 'San Francisco',
-    'state': 'CA',
-    'country': 'US'
-}
+# address = {
+#     'street': '123 Main St',
+#     'city': 'San Francisco',
+#     'state': 'CA',
+#     'country': 'US'
+# }
 
-updated_address = get_current_place(details, address)
-print(updated_address)
+# updated_address = get_current_place(details, address)
+# print(updated_address)
